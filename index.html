@@ -143,81 +143,103 @@
     /* ---------- About ---------- */
     #about p { font-size: 1.02em; }
 
-    /* ---------- Thesis & Publications cards ---------- */
-    #thesis li, #publist > li {
+    /* ---------- Thesis card ---------- */
+    #thesis li {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 1.15em 1.3em;
-      margin-bottom: 1em;
       box-shadow: var(--shadow);
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+      color: #515a6b; font-size: 0.96em;
     }
-    #thesis li:hover, #publist > li:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-hover);
-      border-color: #dcdfea;
+    #thesis li > b:first-of-type {
+      display: block; font-size: 1.04em; color: var(--ink);
+      font-weight: 650; margin-bottom: 0.35em; line-height: 1.45;
     }
-    /* thumbnail-left layout for publications */
-    #publist > li { display: flex; gap: 1.15em; align-items: flex-start; }
-    .pub-thumb {
-      flex: 0 0 212px;
-      width: 212px;
-      height: auto;
-      max-height: 150px;
-      align-self: center;
-      object-fit: contain;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 5px;
+    #thesis li > a {
+      display: inline-block; font-size: 0.8em; font-weight: 600;
+      color: #333; background: #e7e7ea; padding: 0.22em 0.66em;
+      border-radius: 6px; margin: 0.4em 0.35em 0 0;
     }
-    .pub-body { flex: 1 1 auto; min-width: 0; }
-    #thesis li > b:first-of-type, #publist .pub-body > b:first-of-type {
-      display: block;
-      font-size: 1.04em;
-      color: var(--ink);
-      font-weight: 650;
-      margin-bottom: 0.35em;
-      line-height: 1.45;
-    }
-    #thesis li, #publist > li { color: #515a6b; font-size: 0.96em; }
-    #publist li b { color: var(--accent-deep); font-weight: 600; }
-    #publist .pub-body > b:first-of-type { color: var(--ink); }
-    .venue { color: var(--faint); font-style: italic; }
+    #thesis li > a:hover { background: #d9d9de; text-decoration: none; }
 
-    /* action links as pills */
-    #thesis li > a, #publist .pub-body a:not(.tag-chip) {
-      display: inline-block;
-      font-size: 0.76em;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: var(--accent);
-      background: var(--accent-soft);
-      padding: 0.2em 0.62em;
-      border-radius: 7px;
-      margin: 0 0.3em 0.35em 0;
-      transition: background 0.14s, color 0.14s;
+    /* ---------- Publications (journal-style list) ---------- */
+    .pub-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 0.8em; flex-wrap: wrap;
+      background: #8a1414; color: #fff;
+      padding: 0.55em 1em; border-radius: 8px 8px 0 0;
     }
-    #thesis li > a:hover, #publist .pub-body a:not(.tag-chip):hover { background: var(--accent); color: #fff; text-decoration: none; }
+    .pub-bar h2 {
+      margin: 0; color: #fff; font-size: 1.02em; font-weight: 700;
+      letter-spacing: 0.01em; border: none; padding: 0; text-transform: none;
+    }
+    .pub-controls { display: flex; align-items: center; gap: 0.5em; font-size: 0.85em; flex-wrap: wrap; }
+    .pub-controls .ctl {
+      cursor: pointer; color: #e9c9c9; user-select: none;
+      border: none; background: none; font: inherit; padding: 0;
+    }
+    .pub-controls .ctl:hover { color: #fff; }
+    .pub-controls .ctl.active { color: #fff; text-decoration: underline; }
+    .pub-controls .sep { color: #b56b6b; }
 
-    /* ---------- Tag filter ---------- */
-    .tagbar { display: flex; flex-wrap: wrap; gap: 0.45em; margin: 0 0 1.6em; }
+    #subjectrow {
+      display: none; flex-wrap: wrap; gap: 0.4em;
+      padding: 0.8em 1em; background: #f0eaea;
+      border: 1px solid var(--line); border-top: none;
+    }
+    #subjectrow.open { display: flex; }
     .tagbtn {
-      font: inherit; font-size: 0.82em; cursor: pointer;
-      border: 1px solid var(--line); background: #fff; color: #4b5563;
-      padding: 0.38em 0.85em; border-radius: 999px;
-      box-shadow: 0 1px 2px rgba(16,24,40,0.03);
-      transition: all 0.15s ease;
+      font: inherit; font-size: 0.78em; cursor: pointer;
+      border: 1px solid #d8c9c9; background: #fff; color: #6b4b4b;
+      padding: 0.3em 0.8em; border-radius: 999px; transition: all 0.14s ease;
     }
-    .tagbtn:hover { border-color: var(--accent); color: var(--accent); }
-    .tagbtn.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(42,78,214,0.25); }
-    .tagbtn .count { opacity: 0.55; margin-left: 0.4em; font-size: 0.92em; }
-    .tagbtn.active .count { opacity: 0.9; }
+    .tagbtn:hover { border-color: #8a1414; color: #8a1414; }
+    .tagbtn.active { background: #8a1414; border-color: #8a1414; color: #fff; }
+    .tagbtn .count { opacity: 0.6; margin-left: 0.35em; font-size: 0.9em; }
 
+    #publist {
+      margin: 0; border: 1px solid var(--line); border-top: none;
+      border-radius: 0 0 8px 8px; overflow: hidden;
+    }
+    #publist > li {
+      display: flex; gap: 1.2em; align-items: flex-start;
+      padding: 1.2em 1.1em; margin: 0;
+      border-top: 1px solid var(--line);
+      background: #fbfbfc; color: #4a5160; font-size: 0.95em;
+      transition: background 0.12s ease;
+    }
+    #publist > li:first-child { border-top: none; }
+    #publist > li:nth-child(even) { background: #f3f4f6; }
+    #publist > li:hover { background: #eceef3; }
     #publist > li.hidden { display: none; }
 
-    .tags { margin-top: 0.7em; display: flex; flex-wrap: wrap; gap: 0.4em; }
+    .pub-thumb {
+      flex: 0 0 220px; width: 220px; height: auto; max-height: 150px;
+      align-self: flex-start;
+      object-fit: contain; background: #fff;
+      border: 1px solid #dcdcdc; border-radius: 4px; padding: 4px;
+    }
+    .pub-body { flex: 1 1 auto; min-width: 0; }
+    .pub-body > b:first-of-type {
+      display: block; font-size: 1.07em; color: #1a1a1a; font-weight: 700;
+      margin-bottom: 0.15em; line-height: 1.4; transition: color 0.12s;
+    }
+    #publist > li:hover .pub-body > b:first-of-type { color: #c2410c; }
+    #publist .pub-body b { color: #1a1a1a; font-weight: 600; }
+    .venue { color: #555; font-style: italic; }
+    .pub-desc { color: #555; margin: 0.55em 0 0.65em; line-height: 1.55; }
+
+    /* gray pill action links */
+    #publist .pub-body a:not(.tag-chip) {
+      display: inline-block; font-size: 0.8em; font-weight: 600;
+      color: #333; background: #e7e7ea; padding: 0.24em 0.66em;
+      border-radius: 6px; margin: 0 0.42em 0.3em 0;
+      transition: background 0.14s;
+    }
+    #publist .pub-body a:not(.tag-chip):hover { background: #d6d6db; text-decoration: none; }
+
+    .tags { margin-top: 0.55em; display: flex; flex-wrap: wrap; gap: 0.4em; }
     .tag-chip {
       cursor: pointer; font-size: 0.71em; font-weight: 600; letter-spacing: 0.02em;
       padding: 0.22em 0.72em; border-radius: 999px; user-select: none;
@@ -333,11 +355,17 @@
     </section>
 
     <section id="publications">
-      <h2>Publications</h2>
-      <p style="color:var(--muted); font-size:0.92em; margin-top:-0.4em;">
-        Filter by research area — click a tag below or on any paper.
-      </p>
-      <div class="tagbar" id="tagbar">
+      <div class="pub-bar">
+        <h2>Publications</h2>
+        <div class="pub-controls">
+          <span class="ctl active" data-act="all">all</span>
+          <span class="sep">|</span>
+          <span class="ctl" data-act="subject">subject area &#9662;</span>
+          <span class="sep">|</span>
+          <span class="ctl" data-act="year">year &#8597;</span>
+        </div>
+      </div>
+      <div id="subjectrow">
         <button class="tagbtn active" data-filter="all">All</button>
         <button class="tagbtn" data-filter="hypernet">Hypernetworks</button>
         <button class="tagbtn" data-filter="ood">Out-of-Distribution</button>
@@ -349,13 +377,14 @@
         <button class="tagbtn" data-filter="optim">Optimization</button>
       </div>
       <ul id="publist">
-        <li data-tags="cryo hypernet">
+        <li data-tags="cryo hypernet" data-year="2026">
           <img class="pub-thumb" src="figs/atelier.png" alt="Atelier figure" onerror="this.remove()">
           <div class="pub-body">
             <b>Atelier: Learning Local Self-Supervised Features for CryoEM Volumes via Hypernetworks</b>
             Phillip Lo*, <b>Sudarshan Babu*</b>, Dari Kimanius&dagger;, Aly A. Khan&dagger;<br>
             <span class="venue">Under submission</span>
             <span class="authnote">(* co-first authorship, &dagger; co-senior authorship)</span>
+            <p class="pub-desc">Self-supervised learning of local features for cryo-EM volumes using hypernetworks, improving generalization where labeled structural data are scarce.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="cryo">Cryo-EM</span>
               <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
@@ -363,7 +392,7 @@
           </div>
         </li>
 
-        <li data-tags="vcell">
+        <li data-tags="vcell" data-year="2026">
           <img class="pub-thumb" src="figs/virtual_cells_context.png" alt="Virtual Cells Need Context figure" onerror="this.remove()">
           <div class="pub-body">
             <b>Virtual Cells Need Context, Not Just Scale</b>
@@ -372,13 +401,14 @@
             <a href="https://github.com/czbiohub-chi/scldm_cd4">Code</a><br>
             Payam Dibaeinia, <b>Sudarshan Babu</b>, Mei Knudson, Ali ElSheikh, Yibo Wen, Han Liu, Jason Perera, Aly A. Khan<br>
             <span class="venue">ICML 2026</span>
+            <p class="pub-desc">Argues that modeling cellular response demands biological context, not just scale, and benchmarks context-invariant against context-dependent prediction.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="vcell">Virtual Cell</span>
             </div>
           </div>
         </li>
 
-        <li data-tags="vcell diffusion">
+        <li data-tags="vcell diffusion" data-year="2026">
           <img class="pub-thumb" src="figs/scldm.png" alt="scLDM figure" onerror="this.remove()">
           <div class="pub-body">
             <b>A Scalable Latent Diffusion Model for Single-Cell Gene Expression Data</b>
@@ -388,6 +418,7 @@
             <a href="https://github.com/czi-ai/scldm">Code</a><br>
             Giovanni Palla, <b>Sudarshan Babu</b>, Payam Dibaeinia, Donghui Li, Aly A. Khan, Theofanis Karaletsos, Jakub M. Tomczak<br>
             <span class="venue">ICML 2026</span>
+            <p class="pub-desc">A scalable latent diffusion model that generates realistic single-cell gene expression while respecting the data's exchangeability.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="vcell">Virtual Cell</span>
               <span class="tag-chip" data-tag="diffusion">Diffusion</span>
@@ -395,13 +426,14 @@
           </div>
         </li>
 
-        <li data-tags="hypernet diffusion smallmol">
+        <li data-tags="hypernet diffusion smallmol" data-year="2025">
           <img class="pub-thumb" src="figs/hydif.png" alt="HyDiF figure" onerror="this.remove()">
           <div class="pub-body">
             <b>HyperDiffusionFields (HyDiF): Diffusion-Guided Hypernetworks for Learning Implicit Molecular Neural Fields</b>
             <a href="https://arxiv.org/pdf/2510.18122">PDF</a><br>
             <b>Sudarshan Babu*</b>, Phillip Lo*, Xiao Zhang, Aadi Srivastava, Ali Davariashtiyani, Jason Perera, Michael Maire, Aly A. Khan<br>
             <span class="venue">NeurIPS Workshop on AI Virtual Cells and Instruments: A New Era in Drug Discovery and Development 2025</span>
+            <p class="pub-desc">Diffusion-guided hypernetworks that learn implicit molecular neural fields for property prediction, unconditional generation, and inpainting.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
               <span class="tag-chip" data-tag="diffusion">Diffusion</span>
@@ -410,7 +442,7 @@
           </div>
         </li>
 
-        <li data-tags="hypernet vision3d ood">
+        <li data-tags="hypernet vision3d ood" data-year="2024">
           <img class="pub-thumb" src="figs/hyperfields.png" alt="HyperFields figure" onerror="this.remove()">
           <div class="pub-body">
             <b>HyperFields: Towards Zero-Shot Generation of NeRFs from Text</b>
@@ -419,6 +451,7 @@
             <a href="https://github.com/threedle/hyperfields">Code</a><br>
             <b>Sudarshan Babu*</b>, Richard Liu*, Avery Zhou*, Michael Maire, Greg Shakhnarovich, Rana Hanocka<br>
             <span class="venue">ICML 2024</span>
+            <p class="pub-desc">A hypernetwork that maps text prompts to the weights of a NeRF, enabling fast, zero-shot generation of 3D scenes.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
               <span class="tag-chip" data-tag="vision3d">3D Vision</span>
@@ -427,7 +460,7 @@
           </div>
         </li>
 
-        <li data-tags="vision3d">
+        <li data-tags="vision3d" data-year="2024">
           <img class="pub-thumb" src="figs/iseg.png" alt="iSeg figure" onerror="this.remove()">
           <div class="pub-body">
             <b>iSeg: Interactive 3D Segmentation via Interactive Attention</b>
@@ -435,45 +468,49 @@
             <a href="https://threedle.github.io/iSeg/">Website</a><br>
             Itai Lang*, Fei Xu*, Dale Decatur, <b>Sudarshan Babu</b>, Rana Hanocka<br>
             <span class="venue">SIGGRAPH Asia 2024</span>
+            <p class="pub-desc">Interactive fine-grained segmentation of 3D shapes driven by user clicks via an interactive attention mechanism.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="vision3d">3D Vision</span>
             </div>
           </div>
         </li>
 
-        <li data-tags="ood">
+        <li data-tags="ood" data-year="2021">
           <img class="pub-thumb" src="figs/online_meta.png" alt="Online Meta-Learning figure" onerror="this.remove()">
           <div class="pub-body">
             <b>Online Meta-Learning via Learning with Layer-Distributed Memory</b>
             <a href="https://openreview.net/pdf?id=8YSqxvRhi-Q">PDF</a><br>
             <b>Sudarshan Babu</b>, Pedro Savarese, Michael Maire<br>
             <span class="venue">NeurIPS 2021</span>
+            <p class="pub-desc">Online meta-learning with memory distributed across network layers for data-efficient adaptation to new tasks.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="ood">Out-of-Distribution</span>
             </div>
           </div>
         </li>
 
-        <li data-tags="optim">
+        <li data-tags="optim" data-year="2021">
           <img class="pub-thumb" src="figs/domain_independent.png" alt="Domain-Independent Dominance figure" onerror="this.remove()">
           <div class="pub-body">
             <b>Domain-Independent Dominance of Adaptive Methods</b>
             <a href="https://arxiv.org/abs/1912.01823">PDF</a><br>
             Pedro Savarese, David McAllester, <b>Sudarshan Babu</b>, Michael Maire<br>
             <span class="venue">CVPR 2021</span>
+            <p class="pub-desc">AvaGrad: an adaptive optimizer that matches or outperforms Adam and SGD while decoupling learning rate from adaptivity.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="optim">Optimization</span>
             </div>
           </div>
         </li>
 
-        <li data-tags="hypernet ood">
+        <li data-tags="hypernet ood" data-year="2020">
           <img class="pub-thumb" src="figs/hypernet_designs.png" alt="HyperNetwork Designs figure" onerror="this.remove()">
           <div class="pub-body">
             <b>HyperNetwork Designs for Improved Classification and Robust Meta-Learning</b>
             <a href="./pdf/HyperNet_MAML.pdf">PDF</a><br>
             <b>Sudarshan Babu</b>, Pedro Savarese, Michael Maire<br>
             <span class="venue">Preprint 2020</span>
+            <p class="pub-desc">Hypernetwork architectures that improve classification accuracy and yield more robust meta-learning.</p>
             <div class="tags">
               <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
               <span class="tag-chip" data-tag="ood">Out-of-Distribution</span>
@@ -513,15 +550,22 @@
       // ----- year -----
       document.getElementById('yr').textContent = new Date().getFullYear();
 
-      // ----- publication tag filter -----
-      const buttons = Array.from(document.querySelectorAll('.tagbtn'));
-      const items = Array.from(document.querySelectorAll('#publist > li'));
+      // ----- publication filters & sort -----
+      const publist = document.getElementById('publist');
+      const items = Array.from(publist.querySelectorAll(':scope > li'));
+      const origOrder = items.slice();
+      const tagButtons = Array.from(document.querySelectorAll('#subjectrow .tagbtn'));
+      const subjectRow = document.getElementById('subjectrow');
+      const ctlAll = document.querySelector('.ctl[data-act="all"]');
+      const ctlSubject = document.querySelector('.ctl[data-act="subject"]');
+      const ctlYear = document.querySelector('.ctl[data-act="year"]');
 
+      // count badges on subject buttons
       const counts = {};
       items.forEach(li =>
         (li.dataset.tags || '').split(/\s+/).filter(Boolean)
           .forEach(t => { counts[t] = (counts[t] || 0) + 1; }));
-      buttons.forEach(btn => {
+      tagButtons.forEach(btn => {
         const f = btn.dataset.filter;
         const n = f === 'all' ? items.length : (counts[f] || 0);
         const badge = document.createElement('span');
@@ -530,18 +574,55 @@
         btn.appendChild(badge);
       });
 
-      function apply(filter) {
-        buttons.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+      function setActiveCtl(which) {
+        [ctlAll, ctlSubject, ctlYear].forEach(c => c.classList.remove('active'));
+        if (which) which.classList.add('active');
+      }
+      function filterBy(filter) {
+        tagButtons.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
         items.forEach(li => {
           const tags = (li.dataset.tags || '').split(/\s+/);
           li.classList.toggle('hidden', filter !== 'all' && !tags.includes(filter));
         });
-        document.getElementById('publications').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
-      buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.filter)));
+      ctlAll.addEventListener('click', () => {
+        filterBy('all');
+        origOrder.forEach(li => publist.appendChild(li));
+        subjectRow.classList.remove('open');
+        yearDir = 0;
+        ctlYear.innerHTML = 'year &#8597;';
+        setActiveCtl(ctlAll);
+      });
+
+      ctlSubject.addEventListener('click', () => {
+        subjectRow.classList.toggle('open');
+        setActiveCtl(ctlSubject);
+      });
+
+      tagButtons.forEach(b => b.addEventListener('click', () => {
+        filterBy(b.dataset.filter);
+        setActiveCtl(ctlSubject);
+      }));
       document.querySelectorAll('.tag-chip').forEach(chip =>
-        chip.addEventListener('click', () => apply(chip.dataset.tag)));
+        chip.addEventListener('click', () => {
+          subjectRow.classList.add('open');
+          filterBy(chip.dataset.tag);
+          setActiveCtl(ctlSubject);
+        }));
+
+      let yearDir = 0; // 1 = newest first, -1 = oldest first
+      ctlYear.addEventListener('click', () => {
+        yearDir = yearDir === 1 ? -1 : 1;
+        items.slice()
+          .sort((a, b) => {
+            const ya = +a.dataset.year || 0, yb = +b.dataset.year || 0;
+            return yearDir === 1 ? yb - ya : ya - yb;
+          })
+          .forEach(li => publist.appendChild(li));
+        ctlYear.innerHTML = 'year ' + (yearDir === 1 ? '&#8595;' : '&#8593;');
+        setActiveCtl(ctlYear);
+      });
 
       // ----- nav scroll-spy -----
       const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
