@@ -180,6 +180,8 @@
     .tag-chip[data-tag="cryo"]     { background:#fdede2; color:#c2410c; }
     .tag-chip[data-tag="vision3d"] { background:#fcebf3; color:#be185d; }
     .tag-chip[data-tag="optim"]    { background:#eef2f7; color:#475569; }
+    .tag-chip[data-tag="diffusion"]{ background:#e8eafd; color:#4338ca; }
+    .tag-chip[data-tag="smallmol"] { background:#fef6e7; color:#b45309; }
 
     /* ---------- Responsive Tweaks ---------- */
     @media (max-width: 600px) {
@@ -271,6 +273,8 @@
         <button class="tagbtn" data-filter="vcell">Virtual Cell</button>
         <button class="tagbtn" data-filter="cryo">Cryo-EM</button>
         <button class="tagbtn" data-filter="vision3d">3D Vision</button>
+        <button class="tagbtn" data-filter="diffusion">Diffusion</button>
+        <button class="tagbtn" data-filter="smallmol">Small Molecule Design</button>
         <button class="tagbtn" data-filter="optim">Optimization</button>
       </div>
       <ul id="publist">
@@ -310,7 +314,7 @@
           </div>
         </li>
 
-        <li data-tags="hypernet">
+        <li data-tags="hypernet diffusion smallmol">
           <b>HyperDiffusionFields (HyDiF): Diffusion-Guided Hypernetworks for Learning Implicit Molecular Neural Fields</b>
           <a href="https://arxiv.org/pdf/2510.18122">[PDF]</a>
           <br>
@@ -318,6 +322,8 @@
           NeurIPS Workshop on AI Virtual Cells and Instruments: A New Era in Drug Discovery and Development 2025
           <div class="tags">
             <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
+            <span class="tag-chip" data-tag="diffusion">Diffusion</span>
+            <span class="tag-chip" data-tag="smallmol">Small Molecule Design</span>
           </div>
         </li>
 
