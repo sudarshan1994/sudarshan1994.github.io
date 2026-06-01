@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sudarshan Babu — Research Scientist</title>
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* ---------- Base Styling ---------- */
+    body {
+      margin: 0;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.7;
+    }
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      font-weight: 600;
+      color: #111;
+    }
+
+    /* ---------- Navigation ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e5e5;
+      z-index: 100;
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap; /* allows wrapping on mobile */
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0.8em 0.5em;
+    }
+    nav li {
+      margin: 0.3em 1em;
+    }
+    nav a {
+      font-weight: 500;
+      color: #333;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #0077cc;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      text-align: center;
+      padding: 7em 1em 3em; /* extra top padding so "About Me" isn't cut off */
+      background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
+    }
+    header img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;          /* crop to a circle instead of squashing */
+      object-position: center 22%; /* bias toward the face on a tall photo */
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 1.2em;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+    header p {
+      font-size: 1.1em;
+      color: #555;
+      margin-top: 0.3em;
+    }
+
+    /* ---------- Layout ---------- */
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 1em 1.5em 4em;
+      margin-top: 1em;
+    }
+    section {
+      margin-bottom: 3em;
+      animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- Content ---------- */
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 1.2em;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      padding: 2em 1em;
+      color: #666;
+      font-size: 0.9em;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    /* ---------- Custom Colors ---------- */
+    ul li b {
+      color: #004aad; /* DeepMind-inspired blue for titles */
+      font-weight: 600;
+    }
+    a {
+      color: #004aad;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- Responsive Tweaks ---------- */
+    @media (max-width: 600px) {
+      header {
+        padding: 8em 1em 3em; /* extra top padding for small screens */
+      }
+      header img {
+        width: 120px;
+        height: 120px;
+      }
+      nav li {
+        margin: 0.3em 0.8em;
+      }
+      main {
+        padding: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#service">Service</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <img src="website_profile.jpg" alt="Sudarshan Babu" />
+    <h1>Sudarshan Babu</h1>
+    <p>Research Scientist, <a href="https://www.czbiohub.org/chi/">Chan Zuckerberg Biohub Chicago</a></p>
+    <p><a href="mailto:sudarshan@ttic.edu">sudarshan@ttic.edu</a> &nbsp;·&nbsp;
+       <a href="pdf/sud_resume_1_1_26.pdf">Curriculum Vitae</a>
+    </p>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a Research Scientist at the <a href="https://www.czbiohub.org/chi/">Chan Zuckerberg Biohub Chicago</a>,
+        where I develop generative models across diverse biological data modalities, including
+        small molecules, single-cell expression data, and cryo-ET protein volumes.
+      </p>
+
+      <p>
+        My research focuses on designing models that can generalize effectively to out-of-distribution settings,
+        where training data are inherently limited. I am particularly interested in how meta-learning frameworks—
+        especially hypernetworks—can be leveraged to make models more data-efficient and capable of adapting
+        across diverse biological domains.
+      </p>
+
+      <p>
+        Before joining the Chan Zuckerberg Biohub, I was a Postdoctoral Researcher at the
+        <a href="https://www.uchicago.edu/en">University of Chicago</a> advised by
+        <a href="https://people.cs.uchicago.edu/~aakhan/">Aly A. Khan</a>. Previously, I was a PhD student at the
+        <a href="https://www.ttic.edu/">Toyota Technological Institute at Chicago (TTIC)</a>, affiliated with the
+        <a href="https://www.uchicago.edu/en">University of Chicago</a>. I was fortunate to be advised by
+        <a href="http://people.cs.uchicago.edu/~mmaire/">Michael Maire</a> and
+        <a href="https://home.ttic.edu/~gregory/">Greg Shakhnarovich</a>, and am also grateful for
+        <a href="http://people.cs.uchicago.edu/~ranahanocka/">Rana Hanocka’s</a> advice on all things 3D.
+      </p>
+    </section>
+
+    <section id="thesis">
+      <h2>Thesis</h2>
+      <ul>
+        <li>
+          <b>Acquiring and Adapting Priors for Novel Tasks via Neural Meta-Architectures</b>
+          <a href="https://arxiv.org/pdf/2507.10446">[PDF]</a><br>
+          Ph.D. Thesis, Toyota Technological Institute at Chicago (TTIC), 2025
+        </li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <ul>
+        <li>
+          <b>HyperDiffusionFields (HyDiF): Diffusion-Guided Hypernetworks for Learning Implicit Molecular Neural Fields</b>
+          <a href="https://arxiv.org/pdf/2510.18122">[PDF]</a>
+          <br>
+          <b>Sudarshan Babu*</b>, Phillip Lo*, Xiao Zhang, Aadi Srivastava, Ali Davariashtiyani, Jason Perera, Michael Maire, Aly A. Khan<br>
+          NeurIPS Workshop on AI Virtual Cells and Instruments: A New Era in Drug Discovery and Development 2025
+        </li>
+
+        <li>
+          <b>A Scalable Latent Diffusion Model for Single-Cell Gene Expression Data</b>
+          <a href="https://arxiv.org/abs/2511.02986">[PDF]</a>
+          <a href="https://biohub.org/blog/scldm-ai-cellular-diversity/">[Blog]</a>
+          <a href="https://virtualcellmodels.cziscience.com/model/scldm">[Website]</a>
+          <a href="https://github.com/czi-ai/scldm">[Code]</a><br>
+          Giovanni Palla, <b>Sudarshan Babu</b>, Payam Dibaeinia, Donghui Li, Aly A. Khan, Theofanis Karaletsos, Jakub M. Tomczak<br>
+          NeurIPS Workshop on AI Virtual Cells and Instruments: A New Era in Drug Discovery and Development 2025
+        </li>
+
+        <li>
+          <b>HyperFields: Towards Zero-Shot Generation of NeRFs from Text</b>
+          <a href="https://arxiv.org/pdf/2310.17075.pdf">[PDF]</a>
+          <a href="https://threedle.github.io/hyperfields/">[Website]</a>
+          <a href="https://github.com/threedle/hyperfields">[Code]</a><br>
+          <b>Sudarshan Babu*</b>, Richard Liu*, Avery Zhou*, Michael Maire, Greg Shakhnarovich, Rana Hanocka<br>
+          ICML 2024
+        </li>
+
+        <li>
+          <b>iSeg: Interactive 3D Segmentation via Interactive Attention</b>
+          <a href="https://arxiv.org/pdf/2404.03219">[PDF]</a>
+          <a href="https://threedle.github.io/iSeg/">[Website]</a><br>
+          Itai Lang*, Fei Xu*, Dale Decatur, <b>Sudarshan Babu</b>, Rana Hanocka<br>
+          SIGGRAPH Asia 2024
+        </li>
+
+        <li>
+          <b>Online Meta-Learning via Learning with Layer-Distributed Memory</b>
+          <a href="https://openreview.net/pdf?id=8YSqxvRhi-Q">[PDF]</a><br>
+          <b>Sudarshan Babu</b>, Pedro Savarese, Michael Maire<br>
+          NeurIPS 2021
+        </li>
+
+        <li>
+          <b>Domain-Independent Dominance of Adaptive Methods</b>
+          <a href="https://arxiv.org/abs/1912.01823">[PDF]</a><br>
+          Pedro Savarese, David McAllester, <b>Sudarshan Babu</b>, Michael Maire<br>
+          CVPR 2021
+        </li>
+
+        <li>
+          <b>HyperNetwork Designs for Improved Classification and Robust Meta-Learning</b>
+          <a href="./pdf/HyperNet_MAML.pdf">[PDF]</a><br>
+          <b>Sudarshan Babu</b>, Pedro Savarese, Michael Maire<br>
+          Preprint 2020
+        </li>
+      </ul>
+    </section>
+
+    <section id="talks">
+      <h2>Talks</h2>
+      <ul>
+        <li><b>Novel Molecular Representations for AI-Driven Discovery</b><br>
+          2025 GLC ASPET 38th Annual Meeting</li>
+        <li><b>HyperDiffusionFields (HyDiF): Diffusion-Guided Hypernetworks for Learning Implicit Molecular Neural Fields</b><br>
+          CME Department Seminar, University of Illinois at Chicago, 2025</li>
+      </ul>
+    </section>
+
+    <section id="service">
+      <h2>Academic Service</h2>
+      <ul>
+        <li>Reviewer: ICCV, CVPR, ECCV, NeurIPS, ICLR, SIGGRAPH, RECOMB</li>
+        <li>Co-organized workshops: Midwest Computational Biology Workshop (TTIC, 2024) and TTIC Student Workshop (2020)</li>
+        <li>TTIC/UChicago Vision Reading Group (2019–2024)</li>
+        <li>TA: Statistical Machine Learning (Fall 2020)</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Sudarshan Babu · Last updated October 2025
+  </footer>
+</body>
+</html>
