@@ -5,175 +5,210 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sudarshan Babu — Research Scientist</title>
   <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz@0,6..72;1,6..72&display=swap" rel="stylesheet">
   <style>
-    /* ---------- Base Styling ---------- */
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --ink: #1b2230;
+      --muted: #6b7280;
+      --faint: #9aa1ad;
+      --line: #e8e9ee;
+      --accent: #2a4ed6;
+      --accent-soft: #eef1fe;
+      --accent-deep: #1e3aa8;
+      --radius: 16px;
+      --shadow: 0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.05);
+      --shadow-hover: 0 2px 4px rgba(16,24,40,0.06), 0 14px 36px rgba(16,24,40,0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-      background: #fafafa;
-      color: #222;
-      line-height: 1.7;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
     }
-    a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    h1, h2, h3 {
-      font-weight: 600;
-      color: #111;
-    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    h1, h2, h3 { font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
 
     /* ---------- Navigation ---------- */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e5e5e5;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--line);
       z-index: 100;
     }
-    nav ul {
+    .nav-inner {
+      max-width: 880px;
+      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap; /* allows wrapping on mobile */
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7em 1.5em;
+      gap: 1em;
+    }
+    .brand {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 0.98em;
+      letter-spacing: -0.02em;
+    }
+    .brand:hover { text-decoration: none; color: var(--accent); }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
       list-style: none;
-      margin: 0;
-      padding: 0.8em 0.5em;
+      margin: 0; padding: 0;
+      gap: 0.3em;
     }
-    nav li {
-      margin: 0.3em 1em;
-    }
-    nav a {
+    .nav-links a {
       font-weight: 500;
-      color: #333;
-      transition: color 0.2s;
+      font-size: 0.9em;
+      color: var(--muted);
+      padding: 0.35em 0.7em;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
     }
-    nav a:hover {
-      color: #0077cc;
-    }
+    .nav-links a:hover { color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+    .nav-links a.active { color: var(--accent); background: var(--accent-soft); }
 
-    /* ---------- Header ---------- */
+    /* ---------- Header / Hero ---------- */
     header {
       text-align: center;
-      padding: 7em 1em 3em; /* extra top padding so "About Me" isn't cut off */
-      background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
+      padding: 8.5em 1.5em 3.4em;
+      background:
+        radial-gradient(1100px 380px at 50% -120px, rgba(42,78,214,0.10), transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--line);
     }
     header img {
-      width: 160px;
-      height: 160px;
-      object-fit: cover;          /* crop to a circle instead of squashing */
-      object-position: center 22%; /* bias toward the face on a tall photo */
+      width: 156px; height: 156px;
+      object-fit: cover;
+      object-position: center 22%;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-bottom: 1.2em;
+      border: 4px solid #fff;
+      box-shadow: 0 10px 30px rgba(16,24,40,0.16);
+      margin-bottom: 1.1em;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
+    header h1 { margin: 0; font-size: 2.4em; }
+    .role { font-size: 1.12em; color: var(--muted); margin: 0.35em 0 1.1em; }
+    .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6em; }
+    .hero-actions a {
+      display: inline-flex; align-items: center; gap: 0.4em;
+      font-size: 0.9em; font-weight: 500;
+      padding: 0.5em 1.05em;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
     }
-    header p {
-      font-size: 1.1em;
-      color: #555;
-      margin-top: 0.3em;
-    }
+    .hero-actions a:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); border-color: #d8dbe6; text-decoration: none; }
+    .hero-actions a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 
     /* ---------- Layout ---------- */
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 1em 1.5em 4em;
-      margin-top: 1em;
+    main { max-width: 760px; margin: 0 auto; padding: 3.2em 1.5em 4em; }
+    section { margin-bottom: 3.4em; scroll-margin-top: 80px; }
+    section > h2 {
+      font-size: 0.82em;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 1.2em;
+      padding-bottom: 0.7em;
+      border-bottom: 1px solid var(--line);
     }
-    section {
-      margin-bottom: 3em;
-      animation: fadeIn 0.6s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    section p { color: #38404f; }
+    section p:first-of-type { margin-top: 0; }
 
-    /* ---------- Content ---------- */
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    li {
-      margin-bottom: 1.2em;
-    }
+    ul { list-style: none; padding-left: 0; margin: 0; }
 
-    /* ---------- Footer ---------- */
-    footer {
-      text-align: center;
-      padding: 2em 1em;
-      color: #666;
-      font-size: 0.9em;
-      border-top: 1px solid #e5e5e5;
-    }
+    /* ---------- About ---------- */
+    #about p { font-size: 1.02em; }
 
-    /* ---------- Custom Colors ---------- */
-    ul li b {
-      color: #004aad; /* DeepMind-inspired blue for titles */
+    /* ---------- Thesis & Publications cards ---------- */
+    #thesis li, #publist > li {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.15em 1.3em;
+      margin-bottom: 1em;
+      box-shadow: var(--shadow);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+    #thesis li:hover, #publist > li:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: #dcdfea;
+    }
+    #thesis li > b:first-of-type, #publist li > b:first-of-type {
+      display: block;
+      font-size: 1.04em;
+      color: var(--ink);
+      font-weight: 650;
+      margin-bottom: 0.35em;
+      line-height: 1.45;
+    }
+    #thesis li, #publist > li { color: #515a6b; font-size: 0.96em; }
+    #publist li b { color: var(--accent-deep); font-weight: 600; }
+    #publist li > b:first-of-type { color: var(--ink); }
+    .venue { color: var(--faint); font-style: italic; }
+
+    /* action links as pills */
+    #thesis li > a, #publist li > a {
+      display: inline-block;
+      font-size: 0.76em;
       font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.2em 0.62em;
+      border-radius: 7px;
+      margin: 0 0.3em 0.35em 0;
+      transition: background 0.14s, color 0.14s;
     }
-    a {
-      color: #004aad;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    #thesis li > a:hover, #publist li > a:hover { background: var(--accent); color: #fff; text-decoration: none; }
 
-    /* ---------- Research Tags / Filter ---------- */
-    .tagbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5em;
-      margin: 0 0 1.8em;
-    }
+    /* ---------- Tag filter ---------- */
+    .tagbar { display: flex; flex-wrap: wrap; gap: 0.45em; margin: 0 0 1.6em; }
     .tagbtn {
-      font: inherit;
-      font-size: 0.85em;
-      cursor: pointer;
-      border: 1px solid #d8d8d8;
-      background: #fff;
-      color: #444;
-      padding: 0.35em 0.9em;
-      border-radius: 999px;
+      font: inherit; font-size: 0.82em; cursor: pointer;
+      border: 1px solid var(--line); background: #fff; color: #4b5563;
+      padding: 0.38em 0.85em; border-radius: 999px;
+      box-shadow: 0 1px 2px rgba(16,24,40,0.03);
       transition: all 0.15s ease;
     }
-    .tagbtn:hover { border-color: #004aad; color: #004aad; }
-    .tagbtn.active {
-      background: #004aad;
-      border-color: #004aad;
-      color: #fff;
-    }
-    .tagbtn .count { opacity: 0.55; margin-left: 0.4em; font-size: 0.9em; }
-    .tagbtn.active .count { opacity: 0.85; }
+    .tagbtn:hover { border-color: var(--accent); color: var(--accent); }
+    .tagbtn.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(42,78,214,0.25); }
+    .tagbtn .count { opacity: 0.55; margin-left: 0.4em; font-size: 0.92em; }
+    .tagbtn.active .count { opacity: 0.9; }
 
-    #publist li.hidden { display: none; }
+    #publist > li.hidden { display: none; }
 
-    .tags {
-      margin-top: 0.55em;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4em;
-    }
+    .tags { margin-top: 0.7em; display: flex; flex-wrap: wrap; gap: 0.4em; }
     .tag-chip {
-      cursor: pointer;
-      font-size: 0.72em;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      padding: 0.2em 0.7em;
-      border-radius: 999px;
-      user-select: none;
-      transition: filter 0.15s ease;
+      cursor: pointer; font-size: 0.71em; font-weight: 600; letter-spacing: 0.02em;
+      padding: 0.22em 0.72em; border-radius: 999px; user-select: none;
+      transition: filter 0.15s ease, transform 0.15s ease;
     }
-    .tag-chip:hover { filter: brightness(0.94); text-decoration: none; }
+    .tag-chip:hover { filter: brightness(0.95); transform: translateY(-1px); text-decoration: none; }
     .tag-chip[data-tag="ood"]      { background:#f1ecfd; color:#6d28d9; }
     .tag-chip[data-tag="hypernet"] { background:#e4f6fb; color:#0e7490; }
     .tag-chip[data-tag="vcell"]    { background:#e7f7ec; color:#15803d; }
@@ -182,44 +217,63 @@
     .tag-chip[data-tag="optim"]    { background:#eef2f7; color:#475569; }
     .tag-chip[data-tag="diffusion"]{ background:#e8eafd; color:#4338ca; }
     .tag-chip[data-tag="smallmol"] { background:#fef6e7; color:#b45309; }
+    .authnote { color: var(--faint); font-size: 0.85em; }
 
-    /* ---------- Responsive Tweaks ---------- */
+    /* ---------- Talks & Service ---------- */
+    #talks li, #service li {
+      padding: 0.55em 0 0.55em 1.1em;
+      position: relative;
+      border-bottom: 1px solid var(--line);
+    }
+    #talks li:last-child, #service li:last-child { border-bottom: none; }
+    #talks li::before, #service li::before {
+      content: ""; position: absolute; left: 0; top: 1.05em;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    }
+    #talks li b { color: var(--ink); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center; padding: 2.4em 1em;
+      color: var(--faint); font-size: 0.86em;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ---------- Responsive ---------- */
     @media (max-width: 600px) {
-      header {
-        padding: 8em 1em 3em; /* extra top padding for small screens */
-      }
-      header img {
-        width: 120px;
-        height: 120px;
-      }
-      nav li {
-        margin: 0.3em 0.8em;
-      }
-      main {
-        padding: 1em;
-      }
+      header { padding: 8.5em 1.2em 2.8em; }
+      header img { width: 124px; height: 124px; }
+      header h1 { font-size: 1.95em; }
+      .nav-inner { padding: 0.6em 1em; }
+      .brand { display: none; }
+      .nav-links { width: 100%; justify-content: center; }
+      main { padding: 2.4em 1.1em 3em; }
     }
   </style>
 </head>
 
 <body>
   <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#thesis">Thesis</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#talks">Talks</a></li>
-      <li><a href="#service">Service</a></li>
-    </ul>
+    <div class="nav-inner">
+      <a href="#top" class="brand">Sudarshan Babu</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#thesis">Thesis</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#service">Service</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <header>
+  <header id="top">
     <img src="website_profile.jpg" alt="Sudarshan Babu" />
     <h1>Sudarshan Babu</h1>
-    <p>Research Scientist, <a href="https://www.czbiohub.org/chi/">Chan Zuckerberg Biohub Chicago</a></p>
-    <p><a href="mailto:sudarshan@ttic.edu">sudarshan@ttic.edu</a> &nbsp;·&nbsp;
-       <a href="pdf/sud_resume_1_1_26.pdf">Curriculum Vitae</a>
-    </p>
+    <p class="role">Research Scientist, <a href="https://www.czbiohub.org/chi/">Chan Zuckerberg Biohub Chicago</a></p>
+    <div class="hero-actions">
+      <a class="primary" href="mailto:sudarshan@ttic.edu">sudarshan@ttic.edu</a>
+      <a href="pdf/sud_resume_1_1_26.pdf">Curriculum Vitae</a>
+    </div>
   </header>
 
   <main>
@@ -255,15 +309,15 @@
       <ul>
         <li>
           <b>Acquiring and Adapting Priors for Novel Tasks via Neural Meta-Architectures</b>
-          <a href="https://arxiv.org/pdf/2507.10446">[PDF]</a><br>
-          Ph.D. Thesis, Toyota Technological Institute at Chicago (TTIC), 2025
+          <a href="https://arxiv.org/pdf/2507.10446">PDF</a><br>
+          <span class="venue">Ph.D. Thesis, Toyota Technological Institute at Chicago (TTIC), 2025</span>
         </li>
       </ul>
     </section>
 
     <section id="publications">
       <h2>Publications</h2>
-      <p style="color:#666; font-size:0.92em; margin-top:-0.4em;">
+      <p style="color:var(--muted); font-size:0.92em; margin-top:-0.4em;">
         Filter by research area — click a tag below or on any paper.
       </p>
       <div class="tagbar" id="tagbar">
@@ -279,10 +333,10 @@
       </div>
       <ul id="publist">
         <li data-tags="cryo hypernet">
-          <b>Atelier: Learning Local Self-Supervised Features for CryoEM Volumes via Hypernetworks</b><br>
+          <b>Atelier: Learning Local Self-Supervised Features for CryoEM Volumes via Hypernetworks</b>
           Phillip Lo*, <b>Sudarshan Babu*</b>, Dari Kimanius&dagger;, Aly A. Khan&dagger;<br>
-          Under submission
-          <span style="color:#888; font-size:0.85em;">(* co-first authorship, &dagger; co-senior authorship)</span>
+          <span class="venue">Under submission</span>
+          <span class="authnote">(* co-first authorship, &dagger; co-senior authorship)</span>
           <div class="tags">
             <span class="tag-chip" data-tag="cryo">Cryo-EM</span>
             <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
@@ -291,11 +345,11 @@
 
         <li data-tags="vcell">
           <b>Virtual Cells Need Context, Not Just Scale</b>
-          <a href="https://www.biorxiv.org/content/10.64898/2026.02.04.703804v1">[PDF]</a>
-          <a href="https://virtualcellmodels.cziscience.com/model/scldm-cd4">[Website]</a>
-          <a href="https://github.com/czbiohub-chi/scldm_cd4">[Code]</a><br>
+          <a href="https://www.biorxiv.org/content/10.64898/2026.02.04.703804v1">PDF</a>
+          <a href="https://virtualcellmodels.cziscience.com/model/scldm-cd4">Website</a>
+          <a href="https://github.com/czbiohub-chi/scldm_cd4">Code</a><br>
           Payam Dibaeinia, <b>Sudarshan Babu</b>, Mei Knudson, Ali ElSheikh, Yibo Wen, Han Liu, Jason Perera, Aly A. Khan<br>
-          ICML 2026
+          <span class="venue">ICML 2026</span>
           <div class="tags">
             <span class="tag-chip" data-tag="vcell">Virtual Cell</span>
           </div>
@@ -303,12 +357,12 @@
 
         <li data-tags="vcell diffusion">
           <b>A Scalable Latent Diffusion Model for Single-Cell Gene Expression Data</b>
-          <a href="https://arxiv.org/abs/2511.02986">[PDF]</a>
-          <a href="https://biohub.org/blog/scldm-ai-cellular-diversity/">[Blog]</a>
-          <a href="https://virtualcellmodels.cziscience.com/model/scldm">[Website]</a>
-          <a href="https://github.com/czi-ai/scldm">[Code]</a><br>
+          <a href="https://arxiv.org/abs/2511.02986">PDF</a>
+          <a href="https://biohub.org/blog/scldm-ai-cellular-diversity/">Blog</a>
+          <a href="https://virtualcellmodels.cziscience.com/model/scldm">Website</a>
+          <a href="https://github.com/czi-ai/scldm">Code</a><br>
           Giovanni Palla, <b>Sudarshan Babu</b>, Payam Dibaeinia, Donghui Li, Aly A. Khan, Theofanis Karaletsos, Jakub M. Tomczak<br>
-          ICML 2026
+          <span class="venue">ICML 2026</span>
           <div class="tags">
             <span class="tag-chip" data-tag="vcell">Virtual Cell</span>
             <span class="tag-chip" data-tag="diffusion">Diffusion</span>
@@ -317,10 +371,9 @@
 
         <li data-tags="hypernet diffusion smallmol">
           <b>HyperDiffusionFields (HyDiF): Diffusion-Guided Hypernetworks for Learning Implicit Molecular Neural Fields</b>
-          <a href="https://arxiv.org/pdf/2510.18122">[PDF]</a>
-          <br>
+          <a href="https://arxiv.org/pdf/2510.18122">PDF</a><br>
           <b>Sudarshan Babu*</b>, Phillip Lo*, Xiao Zhang, Aadi Srivastava, Ali Davariashtiyani, Jason Perera, Michael Maire, Aly A. Khan<br>
-          NeurIPS Workshop on AI Virtual Cells and Instruments: A New Era in Drug Discovery and Development 2025
+          <span class="venue">NeurIPS Workshop on AI Virtual Cells and Instruments: A New Era in Drug Discovery and Development 2025</span>
           <div class="tags">
             <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
             <span class="tag-chip" data-tag="diffusion">Diffusion</span>
@@ -330,11 +383,11 @@
 
         <li data-tags="hypernet vision3d ood">
           <b>HyperFields: Towards Zero-Shot Generation of NeRFs from Text</b>
-          <a href="https://arxiv.org/pdf/2310.17075.pdf">[PDF]</a>
-          <a href="https://threedle.github.io/hyperfields/">[Website]</a>
-          <a href="https://github.com/threedle/hyperfields">[Code]</a><br>
+          <a href="https://arxiv.org/pdf/2310.17075.pdf">PDF</a>
+          <a href="https://threedle.github.io/hyperfields/">Website</a>
+          <a href="https://github.com/threedle/hyperfields">Code</a><br>
           <b>Sudarshan Babu*</b>, Richard Liu*, Avery Zhou*, Michael Maire, Greg Shakhnarovich, Rana Hanocka<br>
-          ICML 2024
+          <span class="venue">ICML 2024</span>
           <div class="tags">
             <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
             <span class="tag-chip" data-tag="vision3d">3D Vision</span>
@@ -344,10 +397,10 @@
 
         <li data-tags="vision3d">
           <b>iSeg: Interactive 3D Segmentation via Interactive Attention</b>
-          <a href="https://arxiv.org/pdf/2404.03219">[PDF]</a>
-          <a href="https://threedle.github.io/iSeg/">[Website]</a><br>
+          <a href="https://arxiv.org/pdf/2404.03219">PDF</a>
+          <a href="https://threedle.github.io/iSeg/">Website</a><br>
           Itai Lang*, Fei Xu*, Dale Decatur, <b>Sudarshan Babu</b>, Rana Hanocka<br>
-          SIGGRAPH Asia 2024
+          <span class="venue">SIGGRAPH Asia 2024</span>
           <div class="tags">
             <span class="tag-chip" data-tag="vision3d">3D Vision</span>
           </div>
@@ -355,9 +408,9 @@
 
         <li data-tags="ood">
           <b>Online Meta-Learning via Learning with Layer-Distributed Memory</b>
-          <a href="https://openreview.net/pdf?id=8YSqxvRhi-Q">[PDF]</a><br>
+          <a href="https://openreview.net/pdf?id=8YSqxvRhi-Q">PDF</a><br>
           <b>Sudarshan Babu</b>, Pedro Savarese, Michael Maire<br>
-          NeurIPS 2021
+          <span class="venue">NeurIPS 2021</span>
           <div class="tags">
             <span class="tag-chip" data-tag="ood">Out-of-Distribution</span>
           </div>
@@ -365,9 +418,9 @@
 
         <li data-tags="optim">
           <b>Domain-Independent Dominance of Adaptive Methods</b>
-          <a href="https://arxiv.org/abs/1912.01823">[PDF]</a><br>
+          <a href="https://arxiv.org/abs/1912.01823">PDF</a><br>
           Pedro Savarese, David McAllester, <b>Sudarshan Babu</b>, Michael Maire<br>
-          CVPR 2021
+          <span class="venue">CVPR 2021</span>
           <div class="tags">
             <span class="tag-chip" data-tag="optim">Optimization</span>
           </div>
@@ -375,9 +428,9 @@
 
         <li data-tags="hypernet ood">
           <b>HyperNetwork Designs for Improved Classification and Robust Meta-Learning</b>
-          <a href="./pdf/HyperNet_MAML.pdf">[PDF]</a><br>
+          <a href="./pdf/HyperNet_MAML.pdf">PDF</a><br>
           <b>Sudarshan Babu</b>, Pedro Savarese, Michael Maire<br>
-          Preprint 2020
+          <span class="venue">Preprint 2020</span>
           <div class="tags">
             <span class="tag-chip" data-tag="hypernet">Hypernetworks</span>
             <span class="tag-chip" data-tag="ood">Out-of-Distribution</span>
@@ -390,9 +443,9 @@
       <h2>Talks</h2>
       <ul>
         <li><b>Novel Molecular Representations for AI-Driven Discovery</b><br>
-          2025 GLC ASPET 38th Annual Meeting</li>
+          <span class="venue">2025 GLC ASPET 38th Annual Meeting</span></li>
         <li><b>HyperDiffusionFields (HyDiF): Diffusion-Guided Hypernetworks for Learning Implicit Molecular Neural Fields</b><br>
-          CME Department Seminar, University of Illinois at Chicago, 2025</li>
+          <span class="venue">CME Department Seminar, University of Illinois at Chicago, 2025</span></li>
       </ul>
     </section>
 
@@ -408,15 +461,18 @@
   </main>
 
   <footer>
-    © 2025 Sudarshan Babu · Last updated October 2025
+    © <span id="yr"></span> Sudarshan Babu · Last updated June 2026
   </footer>
 
   <script>
     (function () {
+      // ----- year -----
+      document.getElementById('yr').textContent = new Date().getFullYear();
+
+      // ----- publication tag filter -----
       const buttons = Array.from(document.querySelectorAll('.tagbtn'));
       const items = Array.from(document.querySelectorAll('#publist > li'));
 
-      // append a count badge to each filter button
       const counts = {};
       items.forEach(li =>
         (li.dataset.tags || '').split(/\s+/).filter(Boolean)
@@ -436,13 +492,27 @@
           const tags = (li.dataset.tags || '').split(/\s+/);
           li.classList.toggle('hidden', filter !== 'all' && !tags.includes(filter));
         });
-        // keep the section in view when filtering from a chip lower down
         document.getElementById('publications').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
       buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.filter)));
       document.querySelectorAll('.tag-chip').forEach(chip =>
         chip.addEventListener('click', () => apply(chip.dataset.tag)));
+
+      // ----- nav scroll-spy -----
+      const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+      const sections = navLinks
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const id = e.target.id;
+            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach(s => spy.observe(s));
     })();
   </script>
 </body>
