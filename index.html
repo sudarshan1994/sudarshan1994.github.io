@@ -117,7 +117,7 @@
       color: #4b5563; font-size: 0.96em; box-shadow: var(--shadow);
     }
     #thesis li > b:first-of-type {
-      display: block; font-size: 1.04em; color: var(--ink);
+      display: block; font-size: 1.04em; color: var(--navy);
       font-weight: 600; margin-bottom: 0.3em; line-height: 1.45;
     }
 
@@ -197,7 +197,7 @@
       content: ""; position: absolute; left: 0; top: 1em;
       width: 6px; height: 6px; border-radius: 1px; background: var(--navy);
     }
-    #talks li b { color: var(--ink); }
+    #talks li b { display: block; color: var(--navy); font-weight: 600; margin-bottom: 0.1em; }
 
     /* ---------- Footer ---------- */
     footer {
@@ -297,9 +297,6 @@
         <button class="tagbtn" data-filter="cryo">Cryo-EM</button>
         <button class="tagbtn" data-filter="smallmol">Small Molecule Design</button>
         <button class="tagbtn" data-filter="optim">Optimization</button>
-      </div>
-      <div class="pub-controls">
-        <span class="ctl" data-act="year">sort by year &#8597;</span>
       </div>
       <ul id="publist">
         <li data-tags="cryo hypernet" data-year="2026">
@@ -438,12 +435,10 @@
     (function () {
       document.getElementById('yr').textContent = new Date().getFullYear();
 
-      // ----- publication filters & sort -----
+      // ----- publication area filter -----
       const publist = document.getElementById('publist');
       const items = Array.from(publist.querySelectorAll(':scope > li'));
-      const origOrder = items.slice();
       const tagButtons = Array.from(document.querySelectorAll('#subjectrow .tagbtn'));
-      const ctlYear = document.querySelector('.ctl[data-act="year"]');
 
       const counts = {};
       items.forEach(li =>
@@ -457,7 +452,6 @@
         btn.appendChild(badge);
       });
 
-      let yearDir = 0;
       function filterBy(filter) {
         tagButtons.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
         items.forEach(li => {
@@ -465,30 +459,9 @@
           li.classList.toggle('hidden', filter !== 'all' && !tags.includes(filter));
         });
       }
-
-      tagButtons.forEach(b => b.addEventListener('click', () => {
-        filterBy(b.dataset.filter);
-        if (b.dataset.filter === 'all') {
-          origOrder.forEach(li => publist.appendChild(li));
-          yearDir = 0;
-          ctlYear.innerHTML = 'sort by year &#8597;';
-          ctlYear.classList.remove('active');
-        }
-      }));
+      tagButtons.forEach(b => b.addEventListener('click', () => filterBy(b.dataset.filter)));
       document.querySelectorAll('.tag-chip').forEach(chip =>
         chip.addEventListener('click', () => filterBy(chip.dataset.tag)));
-
-      ctlYear.addEventListener('click', () => {
-        yearDir = yearDir === 1 ? -1 : 1;
-        items.slice()
-          .sort((a, b) => {
-            const ya = +a.dataset.year || 0, yb = +b.dataset.year || 0;
-            return yearDir === 1 ? yb - ya : ya - yb;
-          })
-          .forEach(li => publist.appendChild(li));
-        ctlYear.innerHTML = 'sort by year ' + (yearDir === 1 ? '&#8595;' : '&#8593;');
-        ctlYear.classList.add('active');
-      });
 
       // ----- nav scroll-spy -----
       const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
