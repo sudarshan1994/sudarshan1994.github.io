@@ -150,11 +150,21 @@
     .tagbtn .count { opacity: 0.6; margin-left: 0.35em; font-size: 0.9em; }
 
     #publist > li {
-      padding: 1.15em 0; margin: 0;
-      border-top: 1px solid var(--line);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.05em 1.25em;
+      margin-bottom: 0.85em;
       color: #4b5563; font-size: 0.96em;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
-    #publist > li:first-child { border-top: none; padding-top: 0.2em; }
+    #publist > li:last-child { margin-bottom: 0; }
+    #publist > li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 4px rgba(16,24,40,0.06), 0 14px 32px rgba(20,40,80,0.11);
+      border-color: var(--silver);
+    }
     #publist > li.hidden { display: none; }
     #publist > li > b:first-of-type {
       display: block; font-size: 1.08em; color: var(--navy);
