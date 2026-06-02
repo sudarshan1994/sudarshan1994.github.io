@@ -197,6 +197,33 @@
     }
     .tag-chip:hover { background: var(--navy); color: #fff; border-color: var(--navy); text-decoration: none; }
 
+    /* ---------- Notes ---------- */
+    .note-card {
+      display: flex; gap: 1.2em; align-items: center;
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 12px; padding: 1em 1.2em; box-shadow: var(--shadow);
+      color: inherit; text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .note-card:hover {
+      transform: translateY(-2px); text-decoration: none;
+      box-shadow: 0 2px 4px rgba(16,24,40,0.06), 0 14px 32px rgba(20,40,80,0.11);
+      border-color: var(--silver);
+    }
+    .note-thumb {
+      flex: 0 0 196px; width: 196px; aspect-ratio: 16 / 9;
+      object-fit: cover; border: 1px solid var(--silver); border-radius: 8px; background: #fff;
+    }
+    .note-body { display: block; }
+    .note-body b { display: block; color: var(--navy); font-weight: 600; font-size: 1.06em; margin-bottom: 0.15em; }
+    .note-body .meta { display: block; color: var(--muted); font-size: 0.92em; margin-bottom: 0.4em; }
+    .note-body .open { color: var(--blue); font-weight: 600; font-size: 0.9em; }
+    .note-links { margin: 0.7em 0 0; }
+    .note-links a { font-size: 0.82em; font-weight: 600; color: var(--blue); margin-right: 0.7em; }
+    .note-links a::before { content: "["; color: var(--silver); margin-right: 1px; }
+    .note-links a::after { content: "]"; color: var(--silver); margin-left: 1px; }
+    .note-links a:hover { color: var(--navy); text-decoration: none; }
+
     /* ---------- Talks & Service ---------- */
     #talks li, #service li {
       padding: 0.5em 0 0.5em 1.1em; position: relative;
@@ -225,6 +252,8 @@
       .brand { display: none; }
       .nav-links { width: 100%; justify-content: center; }
       main { padding: 2.2em 1.2em 3em; }
+      .note-card { flex-direction: column; align-items: stretch; }
+      .note-thumb { width: 100%; flex-basis: auto; }
     }
   </style>
 </head>
@@ -237,6 +266,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#thesis">Thesis</a></li>
         <li><a href="#publications">Publications</a></li>
+        <li><a href="#notes">Notes</a></li>
         <li><a href="#talks">Talks</a></li>
         <li><a href="#service">Service</a></li>
       </ul>
@@ -414,6 +444,22 @@
           </div>
         </li>
       </ul>
+    </section>
+
+    <section id="notes">
+      <h2>Notes on Diffusion</h2>
+      <a class="note-card" href="diffusion/">
+        <img class="note-thumb" src="diffusion/thumb.png" alt="Diffusion slides title slide">
+        <span class="note-body">
+          <b>Diffusion Models &amp; Score-Based Generative Modeling</b>
+          <span class="meta">Slide notes · 42 slides</span>
+          <span class="open">Open notes &rarr;</span>
+        </span>
+      </a>
+      <p class="note-links">
+        <a href="diffusion/diffusion_models_polished.pdf" target="_blank" rel="noopener">PDF</a>
+        <a href="diffusion/diffusion_models_polished.pptx" download>PPTX</a>
+      </p>
     </section>
 
     <section id="talks">
