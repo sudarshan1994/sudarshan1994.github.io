@@ -197,22 +197,21 @@
     }
     .tag-chip:hover { background: var(--navy); color: #fff; border-color: var(--navy); text-decoration: none; }
 
-    /* ---------- Notes (tile grid) ---------- */
+    /* ---------- Notes (first-slide tiles) ---------- */
     .note-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em;
     }
     .note-tile {
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      min-height: 130px; padding: 1.3em 1.1em;
-      background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
-      box-shadow: var(--shadow); color: var(--navy); font-weight: 600; line-height: 1.38;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease;
+      display: block; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--line); box-shadow: var(--shadow); background: #fff;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
     .note-tile:hover {
-      transform: translateY(-3px); text-decoration: none; color: var(--blue);
+      transform: translateY(-3px); text-decoration: none;
       box-shadow: 0 2px 4px rgba(16,24,40,0.06), 0 14px 32px rgba(20,40,80,0.12);
       border-color: var(--silver);
     }
+    .note-tile img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
     @media (max-width: 720px) { .note-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 440px) { .note-grid { grid-template-columns: 1fr; } }
 
@@ -306,11 +305,21 @@
     <section id="notes">
       <h2>Notes on Diffusion</h2>
       <div class="note-grid">
-        <a class="note-tile" href="diffusion/">Motivation for Score-Based Generative Modeling</a>
-        <a class="note-tile" href="diffusion/smld_ddpm.html">Score-Based Generative Models: SMLD and DDPM</a>
-        <a class="note-tile" href="diffusion/score_sde_part3.html">Generative Modeling via SDEs</a>
-        <a class="note-tile" href="diffusion/flow_matching.html">Flow Matching &amp; Optimal Transport</a>
-        <a class="note-tile" href="diffusion/flux_matching.html">Flux Matching: Learning Beyond the Score</a>
+        <a class="note-tile" href="diffusion/" title="Motivation for Score-Based Generative Modeling">
+          <img src="diffusion/thumb.png?v=3" alt="Motivation for Score-Based Generative Modeling">
+        </a>
+        <a class="note-tile" href="diffusion/smld_ddpm.html" title="Score-Based Generative Models: SMLD and DDPM">
+          <img src="diffusion/smld_ddpm_thumb.png?v=2" alt="Score-Based Generative Models: SMLD and DDPM">
+        </a>
+        <a class="note-tile" href="diffusion/score_sde_part3.html" title="Generative Modeling via SDEs">
+          <img src="diffusion/score_sde_part3_thumb.png?v=2" alt="Generative Modeling via SDEs">
+        </a>
+        <a class="note-tile" href="diffusion/flow_matching.html" title="Flow Matching &amp; Optimal Transport">
+          <img src="diffusion/flow_matching_thumb.png?v=2" alt="Flow Matching & Optimal Transport">
+        </a>
+        <a class="note-tile" href="diffusion/flux_matching.html" title="Flux Matching: Learning Beyond the Score">
+          <img src="diffusion/flux_matching_thumb.png?v=2" alt="Flux Matching: Learning Beyond the Score">
+        </a>
       </div>
     </section>
 
