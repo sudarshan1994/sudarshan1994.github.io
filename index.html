@@ -197,20 +197,24 @@
     }
     .tag-chip:hover { background: var(--navy); color: #fff; border-color: var(--navy); text-decoration: none; }
 
-    /* ---------- Notes (compact list) ---------- */
-    .note-list li {
-      display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35em 0.8em;
-      padding: 0.62em 0; border-bottom: 1px solid var(--line);
+    /* ---------- Notes (tile grid) ---------- */
+    .note-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em;
     }
-    .note-list li:first-child { padding-top: 0; }
-    .note-list li:last-child { border-bottom: none; }
-    .note-title { color: var(--navy); font-weight: 600; }
-    .note-title:hover { color: var(--blue); text-decoration: none; }
-    .note-meta { color: var(--faint); font-size: 0.84em; }
-    .note-meta a { color: var(--blue); font-weight: 600; margin-left: 0.25em; }
-    .note-meta a::before { content: "["; color: var(--silver); }
-    .note-meta a::after { content: "]"; color: var(--silver); }
-    .note-meta a:hover { color: var(--navy); text-decoration: none; }
+    .note-tile {
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      min-height: 130px; padding: 1.3em 1.1em;
+      background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+      box-shadow: var(--shadow); color: var(--navy); font-weight: 600; line-height: 1.38;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .note-tile:hover {
+      transform: translateY(-3px); text-decoration: none; color: var(--blue);
+      box-shadow: 0 2px 4px rgba(16,24,40,0.06), 0 14px 32px rgba(20,40,80,0.12);
+      border-color: var(--silver);
+    }
+    @media (max-width: 720px) { .note-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 440px) { .note-grid { grid-template-columns: 1fr; } }
 
     /* ---------- Talks & Service ---------- */
     #talks li, #service li {
@@ -301,43 +305,13 @@
 
     <section id="notes">
       <h2>Notes on Diffusion</h2>
-      <ul class="note-list">
-        <li>
-          <a class="note-title" href="diffusion/">Motivation for Score-Based Generative Modeling</a>
-          <span class="note-meta">43 slides ·
-            <a href="diffusion/diffusion_models_polished.pdf?v=3" target="_blank" rel="noopener">PDF</a>
-            <a href="diffusion/diffusion_models_polished.pptx?v=3" download>PPTX</a>
-          </span>
-        </li>
-        <li>
-          <a class="note-title" href="diffusion/smld_ddpm.html">Score-Based Generative Models: SMLD and DDPM</a>
-          <span class="note-meta">62 slides ·
-            <a href="diffusion/smld_ddpm_polished.pdf?v=2" target="_blank" rel="noopener">PDF</a>
-            <a href="diffusion/smld_ddpm_polished.pptx?v=2" download>PPTX</a>
-          </span>
-        </li>
-        <li>
-          <a class="note-title" href="diffusion/score_sde_part3.html">Generative Modeling via SDEs</a>
-          <span class="note-meta">74 slides ·
-            <a href="diffusion/score_sde_part3_polished.pdf?v=2" target="_blank" rel="noopener">PDF</a>
-            <a href="diffusion/score_sde_part3_polished.pptx?v=2" download>PPTX</a>
-          </span>
-        </li>
-        <li>
-          <a class="note-title" href="diffusion/flow_matching.html">Flow Matching &amp; Optimal Transport</a>
-          <span class="note-meta">77 slides ·
-            <a href="diffusion/flow_matching_polished.pdf?v=2" target="_blank" rel="noopener">PDF</a>
-            <a href="diffusion/flow_matching_polished.pptx?v=2" download>PPTX</a>
-          </span>
-        </li>
-        <li>
-          <a class="note-title" href="diffusion/flux_matching.html">Flux Matching: Learning Beyond the Score</a>
-          <span class="note-meta">34 slides ·
-            <a href="diffusion/flux_matching_polished.pdf?v=2" target="_blank" rel="noopener">PDF</a>
-            <a href="diffusion/flux_matching_polished.pptx?v=2" download>PPTX</a>
-          </span>
-        </li>
-      </ul>
+      <div class="note-grid">
+        <a class="note-tile" href="diffusion/">Motivation for Score-Based Generative Modeling</a>
+        <a class="note-tile" href="diffusion/smld_ddpm.html">Score-Based Generative Models: SMLD and DDPM</a>
+        <a class="note-tile" href="diffusion/score_sde_part3.html">Generative Modeling via SDEs</a>
+        <a class="note-tile" href="diffusion/flow_matching.html">Flow Matching &amp; Optimal Transport</a>
+        <a class="note-tile" href="diffusion/flux_matching.html">Flux Matching: Learning Beyond the Score</a>
+      </div>
     </section>
 
     <section id="publications">
